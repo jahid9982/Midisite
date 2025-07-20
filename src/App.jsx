@@ -1,14 +1,18 @@
+import { RouterProvider } from "react-router-dom"
+import Hero from "./Pages/Home/Hero"
+import Home from "./Pages/Home/Home"
 import Footer from "./Pages/Shared/Footer/Footer"
 import Header from "./Pages/Shared/Header/Header"
-
-function App() {
+import router from "./route/Router"
+import { DayPicker } from 'react-day-picker';
+import "react-day-picker/style.css";
+function App({ children }) {
 
 
   return (
-    <div>
-      <Header></Header>
-      <Footer></Footer>
-    </div>
+    <RouterProvider router={router}>
+      {children}
+    </RouterProvider>
   )
 }
 
