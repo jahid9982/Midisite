@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfoService = ({ data }) => {
+const InfoService = ({ data, setOptions }) => {
     const { slots, name, _id } = data
     return (
         <div>
@@ -10,10 +10,15 @@ const InfoService = ({ data }) => {
                     <h2 className="card-title">{name}</h2>
                     <p>Avilable  {slots.length > 1 ? 'Slots' : 'Slot'} {slots.length}</p>
                     <p>{slots[0]}</p>
-                    <button className='bg-primary w-full p-3 mx-10 rounded-2xl text-white'>Select  Time</button>
+                    <label onClick={() => setOptions(data)} htmlFor="booking_modal" className='btn bg-primary w-full p-3 mx-10 mt-10 rounded-2xl text-white'>Select  Time</label>
+
+
+
+
                 </div>
             </div>
         </div>
+
     );
 };
 

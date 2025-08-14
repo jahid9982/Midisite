@@ -7,6 +7,9 @@ import Contact from "../Pages/Contact/Contact";
 import Error from "../Pages/Shared/Error";
 import Blogs from "../Pages/Blogs/Blogs";
 import Service from "../Pages/Service/Service";
+import SingIn from "../Pages/SingIn/SingIn";
+import SingUp from "../Pages/SingUp/SingUp";
+import PrivetRoute from "./PriveteRoute/PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -39,14 +42,23 @@ const router = createBrowserRouter([
             ,
             {
                 path: '/blogs',
-                element: <Blogs></Blogs>
+                element: <PrivetRoute><Blogs></Blogs></PrivetRoute>
             }
             ,
+
             {
                 path: '/service',
                 element: <Service></Service>
+            },
+            {
+                path: '/singin',
+                element: <SingIn></SingIn>
             }
-
+            ,
+            {
+                path: '/singup',
+                element: <SingUp></SingUp>
+            }
         ]
     }
 ])

@@ -1,5 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../Context/UserContext';
 
 const navItems = [
     { path: '/', label: 'Home' },
@@ -11,6 +12,16 @@ const navItems = [
 ];
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleUser = () => {
+        logOut()
+            .then(() => { })
+            .catch((err) => {
+                console.log(err);
+
+            })
+    }
+
     const menuItems = (
         <>
             {navItems.map((item) => (
@@ -63,9 +74,15 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">{menuItems}</ul>
                 </div>
                 <div className="navbar-end mr-4">
-                    <a className="btn bg-[#34C9B6] text-white hover:bg-[#2ab3a2] border-none">
-                        Book Now
-                    </a>
+                    {
+                        user ? <button onClick={handleUser} className="btn bg-[#34C9B6] text-white hover:bg-[#2ab3a2] border-none">
+                            LogOut
+                        </button> : <Link to={'/singin'} className="btn bg-[#34C9B6] text-white hover:bg-[#2ab3a2] border-none">
+                            LogIn
+                        </Link>
+                    }
+
+
                 </div>
             </div>
         </header>
